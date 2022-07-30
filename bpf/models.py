@@ -15,7 +15,8 @@ class Employee(models.Model):
     organization = models.ForeignKey(Organization,
                                      models.SET_NULL,
                                      blank=True,
-                                     null=True, )
+                                     null=True,
+                                     related_name="employees")
 
     def __str__(self):
         return "%s, %s" %(self.last_name, self.first_name)

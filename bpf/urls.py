@@ -1,7 +1,16 @@
-from django.urls import path
+from django.urls import include, path
 
 from . import views
+from rest_framework import routers
+
+from bpf.views import OrganizationViewSet, EmployeeViewSet
+
+
+router = routers.DefaultRouter()
+router.register(r'organization', OrganizationViewSet)
+router.register(r'employee', EmployeeViewSet)
 
 urlpatterns = [
-    path('', views.index, name='index'),
+    path('', include(router.urls)),
 ]
+
