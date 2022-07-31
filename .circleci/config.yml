@@ -42,7 +42,7 @@ jobs:
             docker push "hbuender/serviceware_bpf:${CIRCLE_SHA1}"
   deploy_digital_ocean:
     docker:
-      - image docker:17.05.0-ce-git
+      - image: docker:17.05.0-ce-git
     steps:
         - checkout
         - run:
