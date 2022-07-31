@@ -66,7 +66,7 @@ jobs:
           command: |
             
             docker tag hbuender/serviceware_bpf "${ECR_ENDPOINT}/app:${CIRCLE_SHA1}"
-            docker push "${ECR_ENDPOINT}/hbuender/serviceware_bpf:${CIRCLE_SHA1}"
+            docker push "hbuender/serviceware_bpf:${CIRCLE_SHA1}"
             
 
 workflows:
