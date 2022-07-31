@@ -45,6 +45,9 @@ jobs:
       - image: docker:17.05.0-ce-git
     steps:
         - checkout
+        - add_ssh_keys:
+           fingerprints:
+            - "d2:34:c1:52:46:0d:21:6b:37:7e:21:68:ce:6b:db:5f"
         - run:
            name: Deploy Digital Ocean
            command: |
