@@ -16,5 +16,5 @@ class EmployeeTestCase(TestCase):
         self.Employee = Employee.objects.create(first_name="Hans", last_name="Hagen", organization=Organization.objects.get(name="Serviceware"))
 
     def test_Employee(self):
-        hans=Employee.objects.get(first_name="Hanz")
+        hans=Employee.objects.get(first_name="Hans")
         self.assertEquals(hans.first_name, "Hans")
