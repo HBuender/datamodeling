@@ -21,6 +21,10 @@ jobs:
           command: |
             . venv/bin/activate
             python3 manage.py test
+      - run:
+          name: Build Docker
+          command: |
+            docker build -t hbuender/serviceware_bpf:latest .
       - store_artifacts:
           path: test-reports/
           destination: python_app
