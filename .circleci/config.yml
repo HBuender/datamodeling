@@ -64,8 +64,8 @@ jobs:
       - deploy:
           name: Push application Docker image
           command: |
-            
             docker tag hbuender/serviceware_bpf "hbuender/serviceware_bpf:${CIRCLE_SHA1}"
+            docker login -u="$DOCKER_USER" -p="$DOCKER_PASS" hub.docker.com
             docker push "hbuender/serviceware_bpf:${CIRCLE_SHA1}"
             
 
