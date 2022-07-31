@@ -1,5 +1,5 @@
 jobs:
-  build:
+  test:
     docker:
       - image: circleci/python:3.6
     steps:
@@ -23,32 +23,28 @@ jobs:
       - store_artifacts:
           path: test-reports/
           destination: python_app
-  deploy:
+  build_docker:
     working_directory: /app
     docker:
       - image: docker:17.05.0-ce-git
     steps:
       - checkout
       - setup_remote_docker
-    
       - run:
           name: Build application Docker image
           command: |
             docker build -t hbuender/serviceware_bpf .
-      
       - deploy:
           name: Push application Docker image
           command: |
             docker tag hbuender/serviceware_bpf "hbuender/serviceware_bpf:${CIRCLE_SHA1}"
             docker login -u "$DOCKER_USER" -p "$DOCKER_PASS"
             docker push "hbuender/serviceware_bpf:${CIRCLE_SHA1}"
-            
-
 workflows:
   version: 2
   build_test_deploy:
     jobs:
-        - build
-        - deploy:
+        - test
+        - build_docker:
             requires:
-              - build
+              - test
