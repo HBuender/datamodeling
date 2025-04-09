@@ -9,7 +9,7 @@ class OrganizationTestCase(TestCase):
 
     def test_Organization(self):
         serviceware = Organization.objects.get(name="Serviceware")
-        self.assertEquals(serviceware.name, "Serviceware")
+        self.assertEqual(serviceware.name, "Serviceware")
 class EmployeeTestCase(TestCase):
     def setUp(self):
         self.Organization=Organization.objects.create(name="Serviceware")
@@ -17,4 +17,4 @@ class EmployeeTestCase(TestCase):
 
     def test_Employee(self):
         hans=Employee.objects.get(first_name="Hans")
-        self.assertEquals(hans.first_name, "Hans")
+        self.assertEqual(hans.first_name, "Hans")
