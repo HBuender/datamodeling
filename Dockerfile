@@ -1,6 +1,6 @@
 # The first instruction is what image we want to base our container on
 # We Use an official Python runtime as a parent image
-FROM python:3.13.2-slim
+FROM python:3.14-rc-alpine3.20
 
 # The enviroment variable ensures that the python output is set straight
 # to the terminal with out buffering it first
